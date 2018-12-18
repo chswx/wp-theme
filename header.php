@@ -4,6 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="#chswx">
+    <meta name="application-name" content="#chswx">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=A00YePnb9k">
+    <meta name="theme-color" content="#ffffff">
     <?php wp_head(); ?>
 </head>
 <body>
