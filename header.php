@@ -7,7 +7,6 @@
     <meta name="apple-mobile-web-app-title" content="#chswx">
     <meta name="application-name" content="#chswx">
     <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=A00YePnb9k">
     <meta name="theme-color" content="#ffffff">
     <?php wp_head(); ?>
 </head>
