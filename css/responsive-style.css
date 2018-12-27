@@ -40,7 +40,15 @@ h1.main-title {
 	text-shadow: 0px 0px 10px rgba(32,32,32,0.8);
 }
 
-.home h2, #footer h2 {
+h1.main-title a {
+    color: #FFF;
+}
+
+h1.main-title a:active {
+    color: #EFEFEF;
+}
+
+.home h2, #footer h2, h2.alternate {
 	font-size: 0.8em;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
@@ -402,6 +410,50 @@ a img.aligncenter {
 
 /* End WordPress Core */
 
+/* Single posts */
+
+article.full-post header {
+    border-left: 5px solid #003b9f;
+    padding: 2px 2px 2px 8px;
+}
+
+article.full-post header h1 {
+    margin-bottom: 2px;
+    margin-top: 0px;
+    padding-top: 0px;
+    letter-spacing: -0.01em;
+    font-size: 2em;
+}
+
+.meta {
+    color: #444;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.meta a {
+    color: #333;
+}
+
+.meta a:hover, .meta a:active {
+    color: #555;
+}
+
+article.full-post p {
+    line-height: 1.4em;
+}
+
+article.full-post h2, article.full-post h3 {
+    letter-spacing: -0.01em;
+    color: #222;
+}
+
+article.full-post .entry-footer {
+    border-top: 1px solid #DDD;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
 /* Comments */
 
 .comment-content a {
@@ -419,7 +471,7 @@ a img.aligncenter {
 		font-size: 2em;
 	}
 
-	h2 {
+	.front-page h2 {
 		font-size: 0.9em;
 	}
 

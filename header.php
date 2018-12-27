@@ -11,4 +11,8 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <h1 class="main-title"><span class="city" title="Charleston Weather">#chswx</span></h1>
+    <h1 class="main-title"><span class="city" title="Charleston Weather"><a href="/">#chswx</a></span></h1>
+    <div id="wrapper">
+    <?php if (is_blog_page()) {
+        ?><h2 class="alternate">Blog</h2><?php
+    }

@@ -76,7 +76,6 @@ jQuery(document).ready(function($) {
     });
 });
 </script>
-<div id="wrapper">
     <div id="currentwx">
         <h2>CURRENTLY</h2>
     <?php
@@ -159,7 +158,6 @@ if(isset($data['current_observation'])) {
             <?php }
         ?>
     </ul>
-</div>
 </div>
 <?php
 get_footer();

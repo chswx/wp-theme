@@ -1,3 +1,4 @@
+</div> <!-- .wrapper -->
 <div id="footer">
     <div id="footer-wrapper">
         <h2>About @chswx</h2>
