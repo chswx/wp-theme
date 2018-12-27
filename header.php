@@ -10,5 +10,5 @@
     <meta name="theme-color" content="#ffffff">
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
     <h1 class="main-title"><span class="city" title="Charleston Weather">#chswx</span></h1>
