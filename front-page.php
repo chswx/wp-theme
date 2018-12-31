@@ -167,4 +167,17 @@ if(isset($data['current_observation'])) {
     </ul>
 </div>
 <?php
+$blog_query = new WP_Query('post_type=post&limit=1');
+if ($blog_query->have_posts()) {
+    ?>
+    <div id="blog-intro">
+    <h2>Charleston Weather Blog</h2>
+    <?php
+    $blog_query->the_post();
+    get_template_part('template-parts/part', 'post'); ?>
+    </div><?php
+    wp_reset_postdata();
+}
+?>
+<?php
 get_footer();
