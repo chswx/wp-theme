@@ -48,7 +48,7 @@ h1.main-title a:active {
     color: #EFEFEF;
 }
 
-.home h2, #footer h2, h2.alternate {
+.home h2, #footer h2, .alternate {
 	font-size: 0.8em;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
@@ -411,6 +411,59 @@ a img.aligncenter {
 
 /* End WordPress Core */
 
+/* Blog welcome */
+
+.blog-welcome {
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #CCC;
+}
+
+.blog-welcome h1 {
+    font-size: 1.0em;
+    margin-bottom: 3px;
+}
+
+.blog-welcome p {
+    margin-top: 0px;
+    font-size: 0.8em;
+    color: #333;
+}
+
+/* Partial posts */
+
+article.partial-post {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+article.partial-post:last-child {
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+article.partial-post header {
+    border-left: 5px solid #003b9f;
+    padding: 2px 2px 2px 8px;
+}
+
+article.partial-post header h1 {
+    margin-bottom: 2px;
+    margin-top: 0px;
+    padding-top: 0px;
+    letter-spacing: -0.01em;
+    font-size: 1.5em;
+}
+
+article.partial-post header h1 a {
+    color: #000;
+}
+
+article.partial-post header h1 a:hover, article.partial-post header h1 a:active {
+    color: #003b9f;
+}
+
 /* Single posts */
 
 article.full-post header {
@@ -423,7 +476,7 @@ article.full-post header h1 {
     margin-top: 0px;
     padding-top: 0px;
     letter-spacing: -0.01em;
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .meta {

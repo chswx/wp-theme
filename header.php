@@ -13,6 +13,6 @@
 <body <?php body_class(); ?>>
     <h1 class="main-title"><span class="city" title="Charleston Weather"><a href="/">#chswx</a></span></h1>
     <div id="wrapper">
-    <?php if (is_blog_page()) {
-        ?><h2 class="alternate">Blog</h2><?php
+    <?php if (is_blog_page() && !is_home()) {
+        ?><h2 class="alternate"><a href="<?php echo get_post_type_archive_link('post')?>">Blog</a></h2><?php
     }

@@ -1,11 +1,18 @@
 <?php get_header(); ?>
 <div id="wrapper">
-<h1>Blog</h1>
+<?php if (is_home()) : ?>
+<div class="blog-welcome">
+    <h1 class="alternate">Charleston Weather Blog</h1>
+    <p>Forecast explanations, atmospheric science, and other cool weather-related stuff for Charleston, SC</p>
+</div>
+<?php endif; ?>
 <?php
-if(have_posts()) :
-    while(have_posts()): the_post(); ?>
-        <h1><?php the_title(); ?></h1>
-    <?php endwhile;
+if (have_posts()) :
+    while (have_posts()) :
+        the_post();
+        get_template_part('template-parts/part', 'post');
+    endwhile;
+    the_posts_navigation();
 endif;
 ?>
 </div>
