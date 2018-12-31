@@ -1,4 +1,8 @@
 <?php
+include('vendor/autoload.php');
+use Rarst\WordPress\DateTime\WpDateTime;
+use Rarst\WordPress\DateTime\WpDateTimeZone;
+
 $data = json_decode(file_get_contents(WP_CONTENT_DIR . '/uploads/KCHS.json'), true);
 
 // Current conditions
@@ -65,6 +69,9 @@ if(isset($data['current_observation'])) {
     $dewpoint = $ob['dewpoint_f'] . "&deg;F";
     $rh = $ob['relative_humidity'];
     $pressure = $ob['pressure_in'] . " in";
+    $obdate = new WpDateTime();
+    $obdate->setTimestamp($ob['observation_epoch']);
+    $obdate->setTimezone = WpDateTimeZone::getWpTimezone();
 }
 ?>
 <?php get_header(); ?>
@@ -92,7 +99,7 @@ if(isset($data['current_observation'])) {
         <li><span class="title">Dewpoint</span> <?php echo $dewpoint;?></li>
         <li><span class="title">Humidity</span> <?php echo $rh;?></li>
     </ul>
-    <div class="updated-time">last updated <?php echo date('M j, Y g:ia',$ob['observation_epoch']); ?></div>
+    <div class="updated-time">last updated at <?php echo $obdate->formatTime(); ?> on <?php echo $obdate->formatDate(); ?></div>
 <?php } else { ?>
     <div class="fail">Temporarily Unavailable</div>
 <?php } ?>
