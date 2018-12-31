@@ -71,7 +71,7 @@ if(isset($data['current_observation'])) {
     $pressure = $ob['pressure_in'] . " in";
     $obdate = new WpDateTime();
     $obdate->setTimestamp($ob['observation_epoch']);
-    $obdate->setTimezone = WpDateTimeZone::getWpTimezone();
+    $obdate->setTimezone(WpDateTimeZone::getWpTimezone());
 }
 ?>
 <?php get_header(); ?>
