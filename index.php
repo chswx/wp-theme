@@ -12,7 +12,12 @@ if (have_posts()) :
         the_post();
         get_template_part('template-parts/part', 'post');
     endwhile;
-    the_posts_navigation();
+    the_posts_navigation(
+        array(
+            'prev_text' => "&laquo; Older posts",
+            'next_text' => "Newer posts &raquo;"
+        )
+    );
 endif;
 ?>
 </div>

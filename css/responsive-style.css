@@ -430,6 +430,16 @@ a img.aligncenter {
     color: #333;
 }
 
+/* Archive pages */
+
+.blog .posts-navigation .nav-links .nav-previous {
+    float: left;
+}
+
+.blog .posts-navigation .nav-links .nav-next {
+    float: right;
+}
+
 /* Partial posts */
 
 article.partial-post {
