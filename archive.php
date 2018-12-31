@@ -1,12 +1,9 @@
 <?php get_header(); ?>
-<?php if (is_home()) : ?>
-<div class="blog-welcome">
-    <h1 class="alternate">Charleston Weather Blog</h1>
-    <p>Forecast explanations, atmospheric science, and other cool weather-related stuff for Charleston, SC</p>
-</div>
-<?php endif; ?>
 <?php
 if (have_posts()) :
+    the_archive_title( '<h1 class="page-title">', '</h1>' );
+    the_archive_description( '<div class="archive-description">', '</div>' );
+
     while (have_posts()) :
         the_post();
         get_template_part('template-parts/part', 'post');

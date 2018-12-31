@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-<div id="wrapper">
 <?php
 if (have_posts()) :
     the_post(); ?>
@@ -8,6 +7,5 @@ if (have_posts()) :
     <?php
 endif;
 ?>
-</div>
 <?php
 get_footer();
