@@ -152,7 +152,7 @@ ul#others {
 	color: #777;
 }
 
-.updated-time {
+.updated-time, .intro-text {
 	clear: both;
 	font-size: 0.7em;
 	padding-top: 8px;
@@ -448,7 +448,7 @@ article.partial-post {
     padding-bottom: 10px;
 }
 
-article.partial-post:last-child {
+article.partial-post:last-child, .home article.partial-post {
     border-bottom: none;
     margin-bottom: 20px;
 }

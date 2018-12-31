@@ -171,10 +171,12 @@ $blog_query = new WP_Query('post_type=post&limit=1');
 if ($blog_query->have_posts()) {
     ?>
     <div id="blog-intro">
-    <h2>Charleston Weather Blog</h2>
+        <h2>Charleston Weather Blog</h2>
+        <p class="intro-text">Forecast explanations, atmospheric science, and other cool weather-related stuff for Charleston, SC</p>
     <?php
     $blog_query->the_post();
     get_template_part('template-parts/part', 'post'); ?>
+        <a href="<?php echo get_post_type_archive_link('post')?>">More Posts &raquo;</a>
     </div><?php
     wp_reset_postdata();
 }
