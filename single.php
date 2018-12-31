@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     <article class="full-post">
 <?php
-if (have_posts()) :
+while (have_posts()) :
     the_post(); ?>
         <header class="entry-header">
             <h1><?php the_title(); ?></h1>
@@ -9,13 +9,14 @@ if (have_posts()) :
         </header>
         <?php
         the_content(); ?>
-        <footer class="entry-footer">
-            <div class="meta">
+        <footer class="entry-footer <?php if (has_tag()): ?>tagged<?php endif; ?>">
+        <div class="meta">
             <?php
-            the_tags();
+                the_tags();
             ?>
             </div>
-</div>
+            <?php the_post_navigation(); ?>
+        </div>
         <?php
         // If comments are open or we have at least one comment, load up the comment template.
         /*
@@ -24,7 +25,7 @@ if (have_posts()) :
         }*/
         ?>
     <?php
-endif;
+endwhile;
 ?>
     </article>
 <?php

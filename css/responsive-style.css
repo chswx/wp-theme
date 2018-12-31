@@ -274,7 +274,8 @@ ul#others {
 	background-color: #444;
 	padding: 10px 10px 20px 10px;
 	color: #DDD;
-	margin-top: 20px;
+    margin-top: 20px;
+    clear: both;
 }
 
 #footer-wrapper {
@@ -449,9 +450,16 @@ article.full-post h2, article.full-post h3 {
 }
 
 article.full-post .entry-footer {
+    margin-top: 5px;
+}
+
+article.full-post .entry-footer.tagged {
     border-top: 1px solid #DDD;
     padding-top: 10px;
-    margin-top: 5px;
+}
+
+article.full-post .entry-footer.tagged .meta {
+    padding-bottom: 5px;
 }
 
 /* Comments */
@@ -462,6 +470,41 @@ article.full-post .entry-footer {
 
 .bypostauthor {
 	display: block;
+}
+
+/* Post navigation */
+
+.entry-footer .post-navigation {
+    border-top: 1px solid #DDD;
+    margin-top: 5px;
+}
+
+.entry-footer .post-navigation .nav-links .nav-previous:before {
+    content: 'Previously';
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    color: #555
+}
+
+.entry-footer .post-navigation .nav-links .nav-previous {
+    float: left;
+    padding: 20px 0px;
+}
+
+.entry-footer .post-navigation .nav-links .nav-next:before {
+    content: 'Next Up';
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    color: #555
+}
+
+.entry-footer .post-navigation .nav-links .nav-next {
+    float: right;
+    padding: 20px 0px;
 }
 
 /* Responsiveness */
@@ -477,5 +520,13 @@ article.full-post .entry-footer {
 
 	#temp {
 		font-size: 7em;
-	}
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .entry-footer .post-navigation .nav-links .nav-next, 
+    .entry-footer .post-navigation .nav-links .nav-previous {
+        float: none;
+        padding-bottom: 10px;
+    }
 }
