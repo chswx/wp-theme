@@ -68,7 +68,8 @@ function chswx_normalize_observation_data($ob)
         'wind_dir'          => '',
         'wind_gust_mph'     => '',
         'feelslike_f'       => '',
-        'heat_index_f'      => '',
+        'heat_index_f'      => 'NA',
+        'windchill_f'       => 'NA',
         'weather'           => '',
         'observation_epoch' => '',
     );
@@ -104,9 +105,13 @@ function chswx_normalize_observation_data($ob)
     // Take the value of the heat index if it is not null, otherwise use wind chill
     $feelslike = !is_null($hi) ? $hi : $wc;
 
-    if (!is_null($feelslike)) {
-        $c_feelslike = new Convertor($feelslike, 'c');
-        $n_ob['feelslike_f'] = round($c_feelslike->to('f'));
+    // Emulate the values of HI/WC for purposes of how the old API worked
+    if (!is_null($hi)) {
+        $n_ob['heat_index_f'] = $hi;
+    }
+
+    if (!is_null($wc)) {
+        $n_ob['windchill_f'] = $wc;
     }
 
     $c_pres = $ob['barometricPressure']['value'] / 3386.389;
@@ -119,6 +124,14 @@ function chswx_normalize_observation_data($ob)
     $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
     $n_ob['wind_dir'] = chswx_get_wind_direction($ob['windDirection']['value']);
     $n_ob['observation_epoch'] = strtotime($ob['timestamp']);
+    $n_ob['weather'] = $ob['textDescription'];
+
+    if (!is_null($feelslike)) {
+        $c_feelslike = new Convertor($feelslike, 'c');
+        $n_ob['feelslike_f'] = round($c_feelslike->to('f'));
+    } else {
+        $n_ob['feelslike_f'] = $n_ob['temp_f'];
+    }
 
     return $n_ob;
 }
