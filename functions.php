@@ -104,6 +104,11 @@ function chswx_normalize_observation_data($ob)
     // Take the value of the heat index if it is not null, otherwise use wind chill
     $feelslike = !is_null($hi) ? $hi : $wc;
 
+    if (!is_null($feelslike)) {
+        $c_feelslike = new Convertor($feelslike, 'c');
+        $n_ob['feelslike_f'] = round($c_feelslike->to('f'));
+    }
+
     $c_pres = $ob['barometricPressure']['value'] / 3386.389;
     
     // End unit conversions. Start appending values to the array...
@@ -113,7 +118,6 @@ function chswx_normalize_observation_data($ob)
     $n_ob['relative_humidity'] = round($ob['relativeHumidity']['value']) . '%';
     $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
     $n_ob['wind_dir'] = chswx_get_wind_direction($ob['windDirection']['value']);
-    $n_ob['feelslike_f'] = !is_null($feelslike) ? round(Convertor($feelslike, 'c')->to('f')) : $n_ob['temp_f'];
     $n_ob['observation_epoch'] = strtotime($ob['timestamp']);
 
     return $n_ob;
