@@ -50,6 +50,12 @@ function chswx_get_observation_data()
     return $ob['properties'];
 }
 
+function chswx_get_forecast_data()
+{
+    $fcst = json_decode(file_get_contents(WP_CONTENT_DIR . '/uploads/KCHS_fcst.json'), true);
+    return $fcst;
+}
+
 /**
  * Normalize observation data from the NWS API.
  * For now, make it look like the wunderground output until we can do a better job.
