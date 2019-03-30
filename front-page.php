@@ -78,6 +78,7 @@ if(isset($data['current_observation'])) {
 }
 ?>
 <?php get_header(); ?>
+<div class="system-message"><strong>Website update:</strong> Current conditions are once again being fed to the site, this time directly from National Weather Service servers. Alerts and the NWS zone forecast will follow later this weekend. Stay tuned for updates and follow the blog for forecasts!</div>
 <?php /*<script>
 jQuery(document).ready(function($) {
     $('.alert').click(function(event) {
