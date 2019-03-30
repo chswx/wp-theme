@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "759655579971a2c4a1e03d0f5a73f9cc",
+    "content-hash": "cc540301c4d9ab9a8b8d8ede4d1c9d13",
     "packages": [
+        {
+            "name": "olifolkerd/convertor",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/olifolkerd/convertor.git",
+                "reference": "4487800116055a865c2e3245439d75fd4f6380a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/olifolkerd/convertor/zipball/4487800116055a865c2e3245439d75fd4f6380a8",
+                "reference": "4487800116055a865c2e3245439d75fd4f6380a8",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Olifolkerd\\Convertor\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oli Folkerd",
+                    "email": "oliver.folkerd@gmail.com"
+                }
+            ],
+            "description": "An easy to use PHP unit conversion library.",
+            "support": {
+                "source": "https://github.com/olifolkerd/convertor/tree/master",
+                "issues": "https://github.com/olifolkerd/convertor/issues"
+            },
+            "time": "2018-04-02T16:26:04+00:00"
+        },
         {
             "name": "rarst/wpdatetime",
             "version": "0.3",
@@ -56,7 +95,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "olifolkerd/convertor": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

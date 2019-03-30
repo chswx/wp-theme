@@ -1,5 +1,9 @@
 <?php
 
+include_once('vendor/autoload.php');
+
+use Olifolkerd\Convertor\Convertor;
+
 function register_stylesheet()
 {
     wp_enqueue_style('chswx-css', get_template_directory_uri() . '/css/responsive-style.css', false, 'all');
@@ -38,4 +42,93 @@ function is_blog_page()
     // Check all blog-related conditional tags, as well as the current post type, 
     // to determine if we're viewing a blog page.
     return ( $post_type === 'post' ) && ( is_home() || is_archive() || is_single() );
+}
+
+function chswx_get_observation_data()
+{
+    $ob = json_decode(file_get_contents(WP_CONTENT_DIR . '/uploads/KCHS_ob.json'), true);
+    return $ob['properties'];
+}
+
+/**
+ * Normalize observation data from the NWS API.
+ * For now, make it look like the wunderground output until we can do a better job.
+ * Prefixes: n_ = normalized, c_ = convertor
+ */
+function chswx_normalize_observation_data($ob)
+{
+    // Initialize our array of normalized observations.
+    // Yeah, it's PHP, and you don't _have_ to, but no notices is nice
+    $n_ob = array(
+        'temp_f'            => '',
+        'dewpoint_f'        => '',
+        'pressure_in'       => '',
+        'relative_humidity' => '',
+        'wind_mph'          => '',
+        'wind_dir'          => '',
+        'wind_gust_mph'     => '',
+        'feelslike_f'       => '',
+        'heat_index_f'      => '',
+        'weather'           => '',
+        'observation_epoch' => '',
+    );
+    
+    // Set up individual elements to convert.
+    // We will need to do null checks on anything initializing a new Convertor.
+    // Otherwise, they will fail out as a fatal (sad! bad design! hiss!)
+    $t = $ob['temperature']['value'];
+    $tD = $ob['dewpoint']['value'];
+    $hi = $ob['heatIndex']['value'];
+    $wc = $ob['windChill']['value'];
+    $windSpd = $ob['windSpeed']['value'];
+    $windGust = $ob['windGust']['value'];
+
+    // Start unit conversions...
+    if (!is_null($t)) {
+        $c_temp = new Convertor($t, 'c');
+        $n_ob['temp_f'] = $c_temp->to('f');
+    }
+
+    if (!is_null($tD)) {
+        $c_dpt = new Convertor($tD, 'c');
+    }
+
+    if (!is_null($windSpd)) {
+        $c_wind = new Convertor($windSpd, 'm s**-1');
+    }
+
+    if (!is_null($windGust)) {
+        $c_gust = new Convertor($windGust, 'm s**-1');
+        $n_ob['wind_gust_mph'] = round($c_gust->to('mi h**-1')) . " mph";
+    }
+
+    // Take the value of the heat index if it is not null, otherwise use wind chill
+    $feelslike = !is_null($hi) ? $hi : $wc;
+
+    $c_pres = $ob['barometricPressure']['value'] / 3386.389;
+    
+    // End unit conversions. Start appending values to the array...
+    $n_ob['dewpoint_f'] = round($c_dpt->to('f'));
+    $n_ob['pressure_in'] = round($c_pres, 2);
+    $n_ob['relative_humidity'] = round($ob['relativeHumidity']['value']) . '%';
+    $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
+    $n_ob['wind_dir'] = chswx_get_wind_direction($ob['windDirection']['value']);
+    $n_ob['feelslike_f'] = !is_null($feelslike) ? round(Convertor($feelslike, 'c')->to('f')) : $n_ob['temp_f'];
+    $n_ob['observation_epoch'] = strtotime($ob['timestamp']);
+
+    return $n_ob;
+}
+
+/**
+ * PHP port of a solution found at https://stackoverflow.com/questions/7490660/converting-wind-direction-in-angles-to-text-words
+ *
+ * @param int $dir Angle of the compass
+ *
+ * @return string Textual wind direction
+ */
+function chswx_get_wind_direction($dir)
+{
+    $val = (int) ($dir / 22.5) + 0.5;
+    $directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+    return $directions[($val % 16)];
 }
