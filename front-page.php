@@ -1,9 +1,12 @@
 <?php
-include('vendor/autoload.php');
 use Rarst\WordPress\DateTime\WpDateTime;
 use Rarst\WordPress\DateTime\WpDateTimeZone;
 
-$data = json_decode(file_get_contents(WP_CONTENT_DIR . '/uploads/KCHS.json'), true);
+//$data = json_decode(file_get_contents(WP_CONTENT_DIR . '/uploads/KCHS.json'), true);
+
+$data = array();
+
+$data['current_observation'] = chswx_normalize_observation_data(chswx_get_observation_data());
 
 // Current conditions
 if(isset($data['current_observation'])) {
@@ -75,7 +78,7 @@ if(isset($data['current_observation'])) {
 }
 ?>
 <?php get_header(); ?>
-<script>
+<?php /*<script>
 jQuery(document).ready(function($) {
     $('.alert').click(function(event) {
         var toggleID = '#' + event.currentTarget.id.toString();
@@ -83,10 +86,11 @@ jQuery(document).ready(function($) {
     });
 });
 </script>
+*/?>
     <div id="currentwx">
         <h2>CURRENTLY</h2>
     <?php
-if(isset($data['current_observation'])) { 
+    if(isset($data['current_observation'])) { 
     ?>
     <div id="temp" class="<?php echo $tempcolor?>"><?php echo $temperature?></div>
     <?php if ($display_feels_like): ?>
@@ -146,6 +150,7 @@ if(isset($data['current_observation'])) {
     ?>
 </div>
 <?php } ?>
+<?php if (isset($data['forecast'])) : ?>
 <div id="forecast">
     <h2>Forecast</h2>
     <div class="updated-time">Forecast for Charleston updated at <?php echo $data['forecast']['txt_forecast']['date']?></div>
@@ -166,6 +171,7 @@ if(isset($data['current_observation'])) {
         ?>
     </ul>
 </div>
+            <?php endif; ?>
 <?php
 $blog_query = new WP_Query('post_type=post&limit=1');
 if ($blog_query->have_posts()) {

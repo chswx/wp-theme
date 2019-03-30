@@ -2,8 +2,15 @@
     "name": "jaredwsmith/chswx.wp-theme",
     "description": "WordPress theme for chswx.com",
     "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/olifolkerd/convertor"
+        }
+    ],
     "require": {
-        "rarst/wpdatetime": "0.3"
+        "rarst/wpdatetime": "0.3",
+        "olifolkerd/convertor": "dev-master"
     },
     "license": "GPLv2",
     "authors": [
