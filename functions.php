@@ -93,14 +93,17 @@ function chswx_normalize_observation_data($ob)
     // Start unit conversions...
     if (!is_null($t)) {
         $c_temp = new Convertor($t, 'c');
+        $n_ob['temp_f'] = round($c_temp->to('f'));
     }
 
     if (!is_null($tD)) {
         $c_dpt = new Convertor($tD, 'c');
+        $n_ob['dewpoint_f'] = round($c_dpt->to('f'));
     }
 
     if (!is_null($windSpd)) {
         $c_wind = new Convertor($windSpd, 'm s**-1');
+        $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
     }
 
     if (!is_null($windGust)) {
@@ -123,11 +126,10 @@ function chswx_normalize_observation_data($ob)
     $c_pres = $ob['barometricPressure']['value'] / 3386.389;
     
     // End unit conversions. Start appending values to the array...
-    $n_ob['temp_f'] = round($c_temp->to('f'));
-    $n_ob['dewpoint_f'] = round($c_dpt->to('f'));
-    $n_ob['pressure_in'] = round($c_pres, 2);
+    
+
+    $n_ob['pressure_in'] = number_format(round($c_pres, 2), 2);
     $n_ob['relative_humidity'] = round($ob['relativeHumidity']['value']) . '%';
-    $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
     $n_ob['wind_dir'] = chswx_get_wind_direction($ob['windDirection']['value']);
     $n_ob['observation_epoch'] = strtotime($ob['timestamp']);
     $n_ob['weather'] = $ob['textDescription'];
