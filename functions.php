@@ -104,6 +104,8 @@ function chswx_normalize_observation_data($ob)
     if (!is_null($windSpd)) {
         $c_wind = new Convertor($windSpd, 'm s**-1');
         $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
+    } else {
+        $n_ob['wind_mph'] = "Not Available";
     }
 
     if (!is_null($windGust)) {
@@ -153,7 +155,11 @@ function chswx_normalize_observation_data($ob)
  */
 function chswx_get_wind_direction($dir)
 {
-    $val = (int) ($dir / 22.5) + 0.5;
-    $directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
-    return $directions[($val % 16)];
+    if (!is_null($dir)) {
+        $val = (int) ($dir / 22.5) + 0.5;
+        $directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+        return $directions[($val % 16)];
+    }
+
+    return "";
 }

@@ -58,7 +58,7 @@ if(isset($data['current_observation'])) {
     $sky = $ob['weather'];
 
     // Winds
-    if($ob['wind_mph'] == 0) {
+    if($ob['wind_mph'] === 0) {
         $wind = "Calm";
     }
     else {
