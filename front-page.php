@@ -152,14 +152,19 @@ jQuery(document).ready(function($) {
     ?>
 </div>
 <?php } ?>
-<?php if (isset($data['forecast'])) : ?>
+<?php if (isset($data['forecast'])) :
+    $fcstdate = new WpDateTime();
+    if (isset($data['forecast']['updated'])) {
+        $fcstdate->setTimestamp($data['forecast']['updated']);
+        $fcstdate->setTimezone(WpDateTimeZone::getWpTimezone());
+    }
+    ?>
 <div id="forecast">
     <h2>Forecast</h2>
-    <div class="updated-time">Forecast for Charleston updated at <?php echo $data['forecast']['updated']?></div>
+    <div class="updated-time">Forecast for Charleston updated at <?php echo $fcstdate->formatTime()?> on <?php echo $fcstdate->formatDate(); ?></div>
     <ul>
         <?php 
-            if(isset($data['forecast']['periods']))
-            {
+            if (isset($data['forecast']['periods'])) {
                 foreach($data['forecast']['periods'] as $forecast)
                 {
                     ?><li><span class="day"><?php echo $forecast['name']?></span> <span class="forecast_text"><?php echo $forecast['detailedForecast']?></span></li>

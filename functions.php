@@ -53,6 +53,7 @@ function chswx_get_observation_data()
 function chswx_get_forecast_data()
 {
     $fcst = json_decode(file_get_contents(WP_CONTENT_DIR . '/uploads/KCHS_fcst.json'), true);
+    $fcst['updated'] = strtotime($fcst['updated']);
     return $fcst;
 }
 
