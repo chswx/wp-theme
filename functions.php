@@ -50,6 +50,12 @@ function chswx_get_observation_data()
     return $ob['properties'];
 }
 
+function chswx_get_forecast_data()
+{
+    $fcst = json_decode(file_get_contents(WP_CONTENT_DIR . '/uploads/KCHS_fcst.json'), true);
+    return $fcst;
+}
+
 /**
  * Normalize observation data from the NWS API.
  * For now, make it look like the wunderground output until we can do a better job.
@@ -68,7 +74,8 @@ function chswx_normalize_observation_data($ob)
         'wind_dir'          => '',
         'wind_gust_mph'     => '',
         'feelslike_f'       => '',
-        'heat_index_f'      => '',
+        'heat_index_f'      => 'NA',
+        'windchill_f'       => 'NA',
         'weather'           => '',
         'observation_epoch' => '',
     );
@@ -86,15 +93,17 @@ function chswx_normalize_observation_data($ob)
     // Start unit conversions...
     if (!is_null($t)) {
         $c_temp = new Convertor($t, 'c');
-        $n_ob['temp_f'] = $c_temp->to('f');
+        $n_ob['temp_f'] = round($c_temp->to('f'));
     }
 
     if (!is_null($tD)) {
         $c_dpt = new Convertor($tD, 'c');
+        $n_ob['dewpoint_f'] = round($c_dpt->to('f'));
     }
 
     if (!is_null($windSpd)) {
         $c_wind = new Convertor($windSpd, 'm s**-1');
+        $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
     }
 
     if (!is_null($windGust)) {
@@ -105,16 +114,32 @@ function chswx_normalize_observation_data($ob)
     // Take the value of the heat index if it is not null, otherwise use wind chill
     $feelslike = !is_null($hi) ? $hi : $wc;
 
+    // Emulate the values of HI/WC for purposes of how the old API worked
+    if (!is_null($hi)) {
+        $n_ob['heat_index_f'] = $hi;
+    }
+
+    if (!is_null($wc)) {
+        $n_ob['windchill_f'] = $wc;
+    }
+
     $c_pres = $ob['barometricPressure']['value'] / 3386.389;
     
     // End unit conversions. Start appending values to the array...
-    $n_ob['dewpoint_f'] = round($c_dpt->to('f'));
-    $n_ob['pressure_in'] = round($c_pres, 2);
+    
+
+    $n_ob['pressure_in'] = number_format(round($c_pres, 2), 2);
     $n_ob['relative_humidity'] = round($ob['relativeHumidity']['value']) . '%';
-    $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
     $n_ob['wind_dir'] = chswx_get_wind_direction($ob['windDirection']['value']);
-    $n_ob['feelslike_f'] = !is_null($feelslike) ? round(Convertor($feelslike, 'c')->to('f')) : $n_ob['temp_f'];
     $n_ob['observation_epoch'] = strtotime($ob['timestamp']);
+    $n_ob['weather'] = $ob['textDescription'];
+
+    if (!is_null($feelslike)) {
+        $c_feelslike = new Convertor($feelslike, 'c');
+        $n_ob['feelslike_f'] = round($c_feelslike->to('f'));
+    } else {
+        $n_ob['feelslike_f'] = $n_ob['temp_f'];
+    }
 
     return $n_ob;
 }

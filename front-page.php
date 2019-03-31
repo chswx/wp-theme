@@ -7,6 +7,7 @@ use Rarst\WordPress\DateTime\WpDateTimeZone;
 $data = array();
 
 $data['current_observation'] = chswx_normalize_observation_data(chswx_get_observation_data());
+$data['forecast'] = chswx_get_forecast_data();
 
 // Current conditions
 if(isset($data['current_observation'])) {
@@ -78,6 +79,7 @@ if(isset($data['current_observation'])) {
 }
 ?>
 <?php get_header(); ?>
+<div class="system-message"><strong>Website update:</strong> Current conditions are once again being fed to the site, this time directly from National Weather Service servers. Alerts and the NWS zone forecast will follow later this weekend. Stay tuned for updates and follow the blog for forecasts!</div>
 <?php /*<script>
 jQuery(document).ready(function($) {
     $('.alert').click(function(event) {
@@ -153,14 +155,14 @@ jQuery(document).ready(function($) {
 <?php if (isset($data['forecast'])) : ?>
 <div id="forecast">
     <h2>Forecast</h2>
-    <div class="updated-time">Forecast for Charleston updated at <?php echo $data['forecast']['txt_forecast']['date']?></div>
+    <div class="updated-time">Forecast for Charleston updated at <?php echo $data['forecast']['updated']?></div>
     <ul>
         <?php 
-            if(isset($data['forecast']['txt_forecast']))
+            if(isset($data['forecast']['periods']))
             {
-                foreach($data['forecast']['txt_forecast']['forecastday'] as $forecast)
+                foreach($data['forecast']['periods'] as $forecast)
                 {
-                    ?><li><span class="day"><?php echo $forecast['title']?></span> <span class="forecast_text"><?php echo $forecast['fcttext']?></span></li>
+                    ?><li><span class="day"><?php echo $forecast['name']?></span> <span class="forecast_text"><?php echo $forecast['detailedForecast']?></span></li>
                     <?php
                 }
             }
