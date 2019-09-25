@@ -680,4 +680,18 @@ article.full-post .entry-footer.tagged .meta {
     article.partial-post {
         border-bottom-color: #444;
     }
+
+    .wp-block-separator.is-style-dots:before {
+        color: #DDD;
+    }
+
+    .liveblog-entry {
+        background: transparent;
+        border-top: 2px solid  #444;
+        border-bottom: none;
+    }
+
+    .liveblog-meta-time span:first-child {
+        color: #777;
+    }
 }
