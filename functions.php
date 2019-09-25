@@ -6,7 +6,7 @@ use Olifolkerd\Convertor\Convertor;
 
 function register_stylesheet()
 {
-    wp_enqueue_style('chswx-css', get_template_directory_uri() . '/css/responsive-style.css', false, 'all');
+    wp_enqueue_style('chswx-css', get_template_directory_uri() . '/css/responsive-style.css', array(), chswx_get_css_sha(), 'all');
 }
 add_action('wp_enqueue_scripts', 'register_stylesheet');
 
@@ -163,4 +163,13 @@ function chswx_get_wind_direction($dir)
     }
 
     return "";
+}
+
+function chswx_get_css_sha()
+{
+    if (file_exists(ABSPATH . 'css-hash')) {
+        return file_get_contents(ABSPATH . 'css-hash');
+    }
+
+    return false;
 }
