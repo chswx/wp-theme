@@ -1,6 +1,7 @@
 body {
 	font-family:  -apple-system, BlinkMacSystemFont, Helvetica Neue, Roboto, Arial, sans-serif;
-	margin: 0 auto;
+    margin: 0 auto;
+    font-weight: 300;
 }
 
 a {
@@ -57,7 +58,7 @@ h1.main-title a:active {
 
 .home h2 span {
 	letter-spacing: 0em;
-	font-weight: 200;
+	font-weight: 300;
 	text-transform: none;
 	color: #777;
 	font-size: 0.75em;
@@ -104,14 +105,14 @@ div#currentwx #temp.hot
 
 #sky {
 	font-size: 2em;
-	font-weight: 200;
+	font-weight: 600;
 	color: #444;
 	margin-bottom: 18px;
 }
 
 #feels-like {
 	font-size: 1.4em;
-	font-weight: 200;
+	font-weight: 300;
 	margin-bottom: 18px;
 	margin-top: -5px;
 	color: #777;
@@ -148,7 +149,7 @@ ul#others {
 }
 
 #others span.title {
-	font-weight: 200;
+	font-weight: 300;
 	color: #777;
 }
 
@@ -258,9 +259,8 @@ ul#others {
 
 #forecast ul li {
 	padding: 0 0 10px 0;
-	font-weight: 200;
-	font-size: 0.9em;
-	line-height: 1.3em;
+    font-size: 0.9em;
+    line-height: 1.4em;
 }
 
 #forecast .day {
@@ -285,7 +285,7 @@ ul#others {
 
 #footer-wrapper p {
 	font-size: 0.8em;
-	font-weight: 200;
+	font-weight: 300;
 }
 
 #footer-wrapper h2 {
@@ -297,6 +297,30 @@ ul#others {
 	color: #FFF;
 	text-decoration: none;
 	font-weight: bold;
+}
+
+article ul li {
+	padding-bottom: 10px;
+	list-style: square;
+    line-height: 1.4em;
+    font-size: 0.9em;
+}
+
+article.full-post header.entry-header {
+	margin-bottom: 20px;
+}
+
+.wp-block-embed-twitter {
+	margin: 0 auto 1em auto;
+}
+
+.wp-block-embed-twitter .wp-block-embed__wrapper {
+	max-width: 535px;
+	margin: auto;
+}
+
+.liveblog-entry-content img {
+	max-width: 100%
 }
 
 /* =WordPress Core
@@ -430,6 +454,10 @@ a img.aligncenter {
     color: #333;
 }
 
+#blog-intro .intro-text {
+    padding-bottom: 8px;
+}
+
 /* Archive pages */
 
 .blog .posts-navigation .nav-links .nav-previous {
@@ -438,6 +466,13 @@ a img.aligncenter {
 
 .blog .posts-navigation .nav-links .nav-next {
     float: right;
+}
+
+/* Global post styles */
+
+article p {
+    font-size: 0.9em;
+    line-height: 1.4em;
 }
 
 /* Partial posts */
@@ -501,10 +536,6 @@ article.full-post header h1 {
 
 .meta a:hover, .meta a:active {
     color: #555;
-}
-
-article.full-post p {
-    line-height: 1.4em;
 }
 
 article.full-post h2, article.full-post h3 {
@@ -591,5 +622,62 @@ article.full-post .entry-footer.tagged .meta {
     .entry-footer .post-navigation .nav-links .nav-previous {
         float: none;
         padding-bottom: 10px;
+    }
+}
+
+/* Dark mode support */
+
+@media (prefers-color-scheme: dark) {
+    body { 
+        background: #000; 
+        color: #FFF;
+    }
+
+    .home h2, .alternate, a {
+        color: rgb(134,163,198);
+    }
+    
+    article.partial-post header h1 a {
+        color: #FFF;
+    }
+
+    article.partial-post header h1 a:hover, article.partial-post header h1 a:active {
+        color: rgb(134,163,198);
+    }
+
+    #sky, article.full-post h2, article.full-post h3 {
+        color: #EDEDED;
+    }
+
+    .meta, .meta a, .wp-block-image figcaption, #others span.title {
+        color: #999
+    }
+
+    .meta a:hover, .meta a:active, .entry-footer .post-navigation .nav-links .nav-previous:before {
+        color: #777;
+    }
+
+    article.full-post .entry-footer.tagged, .entry-footer .post-navigation {
+        border-top-color: #444;
+    }
+
+    .blog-welcome {
+        border-bottom: 1px solid #444;
+    }
+
+    .blog-welcome p {
+        color: #999;
+    }
+
+    #forecast .day {
+        color: #999;
+    }
+
+    article.partial-post header, article.full-post header {
+        border-left-color: rgb(134,163,198);
+    }
+    
+    article.partial-post {
+        border-bottom-color: #444;
     }
 }
