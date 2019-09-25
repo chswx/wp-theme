@@ -633,6 +633,11 @@ article.full-post .entry-footer.tagged .meta {
         color: #FFF;
     }
 
+    h1.main-title {
+        background-color: #003a84;
+        border-top-color: #1d5582;
+    }
+    
     .home h2, .alternate, a {
         color: rgb(134,163,198);
     }
@@ -693,5 +698,9 @@ article.full-post .entry-footer.tagged .meta {
 
     .liveblog-meta-time span:first-child {
         color: #777;
+    }
+
+    #footer {
+        background-color: #222;
     }
 }
