@@ -641,6 +641,14 @@ article.full-post .entry-footer.tagged .meta {
     .home h2, .alternate, a {
         color: rgb(134,163,198);
     }
+
+    #feels-like span.wc {
+        color: #8597f2;
+    }
+    
+    #feels-like span.hi {
+        color: #ff573d;
+    }
     
     article.partial-post header h1 a {
         color: #FFF;
