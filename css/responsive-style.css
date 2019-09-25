@@ -642,6 +642,10 @@ article.full-post .entry-footer.tagged .meta {
         color: rgb(134,163,198);
     }
 
+    #feels-like {
+        color: #999;
+    }
+
     #feels-like span.wc {
         color: #8597f2;
     }
