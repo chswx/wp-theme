@@ -680,4 +680,8 @@ article.full-post .entry-footer.tagged .meta {
     article.partial-post {
         border-bottom-color: #444;
     }
+
+    .wp-block-separator.is-style-dots:before {
+        color: #444;
+    }
 }
