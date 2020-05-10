@@ -2,8 +2,6 @@
 use Rarst\WordPress\DateTime\WpDateTime;
 use Rarst\WordPress\DateTime\WpDateTimeZone;
 
-//$data = json_decode(file_get_contents(WP_CONTENT_DIR . '/uploads/KCHS.json'), true);
-
 $data = array();
 
 $data['current_observation'] = chswx_normalize_observation_data(chswx_get_observation_data());
@@ -79,15 +77,6 @@ if(isset($data['current_observation'])) {
 }
 ?>
 <?php get_header(); ?>
-<?php /*<script>
-jQuery(document).ready(function($) {
-    $('.alert').click(function(event) {
-        var toggleID = '#' + event.currentTarget.id.toString();
-        $(toggleID + ' ul').toggle();
-    });
-});
-</script>
-*/?>
     <div id="currentwx">
         <h2>CURRENTLY</h2>
     <?php
@@ -109,48 +98,7 @@ jQuery(document).ready(function($) {
     <div class="fail">Temporarily Unavailable</div>
 <?php } ?>
 </div>
-<?php if (!empty($data['alerts'])) 
-{
-?>
-<div id="advisories">
-    <h2>Alerts</h2>
-    <ul>
-    <?php foreach($data['alerts'] as $alert)
-    {
-        // try to filter out bad advisories
-        $current_time = time();
-        
-        if($alert['phenomena'] == "TO")
-        {
-            $advisory_class = "tor";
-        }
-        else if($alert['phenomena'] == "SV")
-        {
-            $advisory_class = "svr";
-        }
-        else if($alert['phenomena'] == 'FL' || $alert['phenomena'] == 'FF')
-        {
-            $advisory_class = "ffw";
-        }
-        else
-        {
-            $advisory_class = "normal";
-        }
-
-        $alert_timing_text = '';
-
-        if($alert['date_epoch'] > time()) {
-            $alert_timing_text = "from {$alert['date']} ";
-        }
-
-        $alert_timing_text .= " until {$alert['expires']}";
-
-        echo "<li class=\"alert vtec-phen-{$alert['phenomena']} vtec-sig-{$alert['significance']}\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-name\">" . $alert['description'] . "</span> <span class=\"alert-timing\">$alert_timing_text</span>";
-        echo "<ul><li>" . str_replace("\n",'<br />',trim($alert['message'])) . "</li></ul></li>";
-    }
-    ?>
-</div>
-<?php } ?>
+<?php do_action('wx_alerts'); ?>
 <?php if (isset($data['forecast'])) :
     $fcstdate = new WpDateTime();
     if (isset($data['forecast']['updated'])) {
