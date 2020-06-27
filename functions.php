@@ -104,14 +104,14 @@ function chswx_normalize_observation_data($ob)
     }
 
     if (!is_null($windSpd)) {
-        $c_wind = new Convertor($windSpd, 'm s**-1');
+        $c_wind = new Convertor($windSpd, 'km h**-1');
         $n_ob['wind_mph'] = round($c_wind->to('mi h**-1')) . " mph";
     } else {
         $n_ob['wind_mph'] = "Not Available";
     }
 
     if (!is_null($windGust)) {
-        $c_gust = new Convertor($windGust, 'm s**-1');
+        $c_gust = new Convertor($windGust, 'km h**-1');
         $n_ob['wind_gust_mph'] = round($c_gust->to('mi h**-1')) . " mph";
     }
 
