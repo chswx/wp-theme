@@ -183,3 +183,6 @@ function chswx_patron_shortcode($atts)
     return file_get_contents('/home/chswx/patrons.inc');
 }
 add_shortcode('patrons', 'chswx_patron_shortcode');
+
+// Disable lazy loading
+add_filter( 'wp_lazy_loading_enabled', '__return_false' );
