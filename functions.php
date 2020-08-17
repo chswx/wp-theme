@@ -174,3 +174,12 @@ function chswx_get_css_sha()
 
     return false;
 }
+
+/**
+ * Grab patrons from a list and display on screen.
+ */
+function chswx_patron_shortcode($atts)
+{
+    return file_get_contents('/home/chswx/patrons.inc');
+}
+add_shortcode('patrons', 'chswx_patron_shortcode');
