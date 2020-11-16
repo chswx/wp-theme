@@ -40,9 +40,9 @@ function is_blog_page()
     // Post type must be 'post'.
     $post_type = get_post_type($post);
 
-    // Check all blog-related conditional tags, as well as the current post type, 
+    // Check all blog-related conditional tags, as well as the current post type,
     // to determine if we're viewing a blog page.
-    return ( $post_type === 'post' ) && ( is_home() || is_archive() || is_single() );
+    return ($post_type === 'post') && (is_home() || is_archive() || is_single());
 }
 
 function chswx_get_observation_data()
@@ -81,7 +81,7 @@ function chswx_normalize_observation_data($ob)
         'weather'           => '',
         'observation_epoch' => '',
     );
-    
+
     // Set up individual elements to convert.
     // We will need to do null checks on anything initializing a new Convertor.
     // Otherwise, they will fail out as a fatal (sad! bad design! hiss!)
@@ -128,9 +128,9 @@ function chswx_normalize_observation_data($ob)
     }
 
     $c_pres = $ob['barometricPressure']['value'] / 3386.389;
-    
+
     // End unit conversions. Start appending values to the array...
-    
+
 
     $n_ob['pressure_in'] = number_format(round($c_pres, 2), 2);
     $n_ob['relative_humidity'] = round($ob['relativeHumidity']['value']) . '%';
@@ -185,4 +185,4 @@ function chswx_patron_shortcode($atts)
 add_shortcode('patrons', 'chswx_patron_shortcode');
 
 // Disable lazy loading
-add_filter( 'wp_lazy_loading_enabled', '__return_false' );
+add_filter('wp_lazy_loading_enabled', '__return_false');
