@@ -112,7 +112,17 @@ if (isset($data['current_observation'])) {
     </div>
 <?php endif; ?>
 <?php
-$blog_query = new WP_Query('post_type=post&limit=1');
+$blog_args = [
+    'post_type' => 'post',
+    'limit' => 1,
+    'tax_query' => [[
+        'taxonomy' => 'post_format',
+        'field'    => 'slug',
+        'terms'    => ['post-format-aside', 'post-format-status'],
+        'operator' => 'NOT IN'
+    ]]
+];
+$blog_query = new WP_Query($blog_args);
 if ($blog_query->have_posts()) {
 ?>
     <div id="blog-intro">

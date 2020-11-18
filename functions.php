@@ -23,6 +23,10 @@ add_theme_support('wp-block-styles');
 add_theme_support('responsive-embeds');
 add_theme_support('post-thumbnails');
 add_theme_support('automatic-feed-links');
+add_theme_support('post-formats', [
+    'aside',
+    'status'
+]);
 
 /**
  * WordPress' missing is_blog_page() function.  Determines if the currently viewed page is
@@ -184,5 +188,13 @@ function chswx_patron_shortcode($atts)
 }
 add_shortcode('patrons', 'chswx_patron_shortcode');
 
-// Disable lazy loading
-add_filter('wp_lazy_loading_enabled', '__return_false');
+/**
+ * Add micro.blog verification to the header
+ *
+ * @return void
+ */
+function chswx_micro_blog_verify()
+{
+    echo '<link href="https://micro.blog/chswx" rel="me" />';
+}
+add_action('wp_head', 'chswx_micro_blog_verify');

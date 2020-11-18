@@ -480,7 +480,7 @@ article p {
 article.partial-post {
     border-bottom: 1px solid #ccc;
     margin-bottom: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 article.partial-post:last-child, .home article.partial-post {
@@ -601,6 +601,21 @@ article.full-post .entry-footer.tagged .meta {
     padding: 20px 0px;
 }
 
+/* Asides/Status */
+
+.aside {
+    padding: 10px;
+    border: 1px solid #a6beff;
+    background-color: #ecf3ff;
+    border-radius: 8px;
+    margin: 30px 0;
+}
+
+.aside p {
+    margin-top: 0.1em;
+    line-height: 1.4em;
+}
+
 /* Responsiveness */
 
 @media screen and (min-width: 600px) {
@@ -618,7 +633,7 @@ article.full-post .entry-footer.tagged .meta {
 }
 
 @media screen and (max-width: 600px) {
-    .entry-footer .post-navigation .nav-links .nav-next, 
+    .entry-footer .post-navigation .nav-links .nav-next,
     .entry-footer .post-navigation .nav-links .nav-previous {
         float: none;
         padding-bottom: 10px;
@@ -628,8 +643,8 @@ article.full-post .entry-footer.tagged .meta {
 /* Dark mode support */
 
 @media (prefers-color-scheme: dark) {
-    body { 
-        background: #000; 
+    body {
+        background: #000;
         color: #FFF;
     }
 
@@ -637,7 +652,7 @@ article.full-post .entry-footer.tagged .meta {
         background-color: #003a84;
         border-top-color: #1d5582;
     }
-    
+
     .home h2, .alternate, a {
         color: rgb(134,163,198);
     }
@@ -649,11 +664,11 @@ article.full-post .entry-footer.tagged .meta {
     #feels-like span.wc {
         color: #8597f2;
     }
-    
+
     #feels-like span.hi {
         color: #ff573d;
     }
-    
+
     article.partial-post header h1 a {
         color: #FFF;
     }
@@ -693,7 +708,7 @@ article.full-post .entry-footer.tagged .meta {
     article.partial-post header, article.full-post header {
         border-left-color: rgb(134,163,198);
     }
-    
+
     article.partial-post {
         border-bottom-color: #444;
     }
@@ -710,6 +725,11 @@ article.full-post .entry-footer.tagged .meta {
 
     .liveblog-meta-time span:first-child {
         color: #777;
+    }
+
+    .aside {
+        border: 1px solid #00227d;
+        background-color: #001438;
     }
 
     #footer {
