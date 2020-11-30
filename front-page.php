@@ -86,7 +86,8 @@ if (isset($data['current_observation'])) {
         <div class="fail">Temporarily Unavailable</div>
     <?php } ?>
 </div>
-<?php do_action('wx_alerts'); ?>
+<?php do_action('chswx_alerts'); ?>
+<?php do_action('chswx_updates'); ?>
 <?php if (isset($data['forecast'])) :
     $fcstdate = new WpDateTime();
     if (isset($data['forecast']['updated'])) {
