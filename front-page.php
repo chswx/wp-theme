@@ -64,10 +64,14 @@ if (isset($data['current_observation'])) {
     $obdate->setTimezone(WpDateTimeZone::getWpTimezone());
 }
 ?>
-<?php get_header(); ?>
+<?php
+get_header();
+?>
+
 <div id="currentwx">
     <h2>CURRENTLY</h2>
     <?php
+    do_action('chswx_current_conditions');
     if (isset($data['current_observation'])) {
     ?>
         <div id="temp" class="<?php echo $tempcolor ?>"><?php echo $temperature ?></div>
@@ -97,6 +101,7 @@ if (isset($data['current_observation'])) {
 ?>
     <div id="forecast">
         <h2>Forecast</h2>
+        <?php do_action('chswx_forecast'); ?>
         <div class="updated-time">Forecast for Charleston updated at <?php echo $fcstdate->formatTime() ?> on <?php echo $fcstdate->formatDate(); ?></div>
         <ul>
             <?php
