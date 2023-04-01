@@ -50,6 +50,7 @@ h1.main-title a:active {
 .chswx-logo {
     filter: drop-shadow(3px 3px 0px rgba(11, 83, 148, 0.5));
     width: 300px;
+    pointer-events: none;
 }
 
 .home h2,
