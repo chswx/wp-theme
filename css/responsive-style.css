@@ -29,16 +29,14 @@ div.system-message {
 }
 
 h1.main-title {
-    background-color: #005acc;
+    background: rgb(53, 54, 194);
+    background: linear-gradient(180deg, rgba(53, 54, 194, 1) 0%, rgba(150, 185, 239, 1) 100%);
     color: #FFF;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 5px;
-    border-top: 1px solid #348cd2;
-    border-bottom: 1px solid #003b9f;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid rgb(103, 138, 191);
     text-align: center;
-    font-size: 1.6em;
-    text-shadow: 0px 0px 10px rgba(32, 32, 32, 0.8);
 }
 
 h1.main-title a {
@@ -47,6 +45,12 @@ h1.main-title a {
 
 h1.main-title a:active {
     color: #EFEFEF;
+}
+
+.chswx-logo {
+    filter: drop-shadow(3px 3px 0px rgba(11, 83, 148, 0.5));
+    width: 300px;
+    pointer-events: none;
 }
 
 .home h2,
@@ -657,8 +661,8 @@ article.full-post .entry-footer.tagged .meta {
     }
 
     h1.main-title {
-        background-color: #003a84;
-        border-top-color: #1d5582;
+        background: rgb(39, 39, 142);
+        background: linear-gradient(180deg, rgba(39, 39, 142, 1) 0%, rgb(122, 151, 194) 100%);
     }
 
     .home h2,

@@ -28,6 +28,9 @@ add_theme_support('post-formats', [
     'status'
 ]);
 
+// Manual override for site icons
+remove_action('wp_head', 'wp_site_icon', 99);
+
 /**
  * WordPress' missing is_blog_page() function.  Determines if the currently viewed page is
  * one of the blog pages, including the blog home page, archive, category/tag, author, or single
@@ -184,7 +187,7 @@ function chswx_get_css_sha()
  */
 function chswx_patron_shortcode($atts)
 {
-    return file_get_contents('/home/chswx/patrons.inc');
+    return file_get_contents('/home/chswx/web/patrons.inc');
 }
 add_shortcode('patrons', 'chswx_patron_shortcode');
 
