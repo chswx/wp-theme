@@ -187,7 +187,7 @@ function chswx_get_css_sha()
  */
 function chswx_patron_shortcode($atts)
 {
-    return file_get_contents('/home/chswx/patrons.inc');
+    return file_get_contents('/home/chswx/web/patrons.inc');
 }
 add_shortcode('patrons', 'chswx_patron_shortcode');
 
