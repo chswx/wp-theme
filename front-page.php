@@ -71,7 +71,7 @@ get_header();
 <div id="currentwx">
     <h2>CURRENTLY</h2>
     <?php
-    do_action('chswx_current_conditions');
+    do_action('wxpress_observations');
     if (isset($data['current_observation'])) {
     ?>
         <div id="temp" class="<?php echo $tempcolor ?>"><?php echo $temperature ?></div>
@@ -90,7 +90,7 @@ get_header();
         <div class="fail">Temporarily Unavailable</div>
     <?php } ?>
 </div>
-<?php do_action('chswx_alerts'); ?>
+<?php do_action('wxpress_alerts'); ?>
 <?php do_action('chswx_updates'); ?>
 <?php if (isset($data['forecast'])) :
     $fcstdate = new WpDateTime();
@@ -101,7 +101,7 @@ get_header();
 ?>
     <div id="forecast">
         <h2>Forecast</h2>
-        <?php do_action('chswx_forecast'); ?>
+        <?php do_action('wxpress_forecast'); ?>
         <div class="updated-time">Forecast for Charleston updated at <?php echo $fcstdate->formatTime() ?> on <?php echo $fcstdate->formatDate(); ?></div>
         <ul>
             <?php
