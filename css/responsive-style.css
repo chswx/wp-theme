@@ -103,6 +103,21 @@ div#currentwx #temp.hot {
     color: rgb(146, 0, 0);
 }
 
+div.system-message.outdated-data {
+    font-size: 0.75em;
+    font-weight: bold;
+    margin: -10px auto 20px auto;
+    padding: 10px 20px;
+    border-radius: 0.5em;
+    text-align: center;
+    display: inline-block;
+}
+
+div.system-message.outdated-data::before {
+    content: '\26A0';
+    padding-right: 3px;
+}
+
 #sky {
     font-size: 2em;
     font-weight: 600;
