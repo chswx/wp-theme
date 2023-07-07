@@ -9,7 +9,6 @@
         }
     ],
     "require": {
-        "rarst/wpdatetime": "0.3",
         "olifolkerd/convertor": "dev-master"
     },
     "license": "GPLv2",
