@@ -167,6 +167,14 @@ div.fail p {
     color: #c81c00;
 }
 
+#feels-like span.hi.danger {
+    color: #7e007e;
+}
+
+#feels-like span.hi.danger::after {
+    content: '\26A0';
+}
+
 #others {
     clear: both;
 }
@@ -714,6 +722,10 @@ article.full-post .entry-footer.tagged .meta {
 
     #feels-like span.hi {
         color: #ff573d;
+    }
+
+    #feels-like span.hi.danger {
+        color: #d37ad3;
     }
 
     article.partial-post header h1 a {
