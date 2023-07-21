@@ -801,6 +801,12 @@ article.full-post .entry-footer.tagged .meta {
         background-color: #001438;
     }
 
+    #advisories li.alert {
+        border: 1px solid #393939;
+        background-color: #282828;
+        color: #ffffff;
+    }
+
     #advisories li[class*="-watch"] {
         border-color: rgb(186, 140, 0);
         background-color: rgb(185, 171, 50);
