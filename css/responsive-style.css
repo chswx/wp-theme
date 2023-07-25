@@ -278,6 +278,15 @@ ul#others {
     color: #FFF;
 }
 
+#advisories span.danger::before {
+    content: '\26A0';
+    padding-right: 5px;
+}
+
+#advisories span.danger {
+    font-weight: bold;
+}
+
 #forecast ul {
     list-style: none;
     margin: 0;
@@ -578,6 +587,10 @@ article.full-post h2,
 article.full-post h3 {
     letter-spacing: -0.01em;
     color: #222;
+}
+
+article.full-post img {
+    max-width: 100%
 }
 
 article.full-post .entry-footer {
