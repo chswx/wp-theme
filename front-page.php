@@ -3,7 +3,7 @@ get_header();
 ?>
 
 <div id="currentwx">
-    <h2>CURRENTLY</h2>
+    <h2>Currently</h2>
     <?php do_action('wxpress_observations'); ?>
 </div>
 <?php do_action('wxpress_alerts'); ?>
@@ -13,12 +13,19 @@ $blog_args = [
     'post_type' => 'post',
     'limit' => 1,
     'category_name' => 'Forecasts',
-    'tax_query' => [[
-        'taxonomy' => 'post_format',
-        'field'    => 'slug',
-        'terms'    => ['post-format-aside', 'post-format-status'],
-        'operator' => 'NOT IN'
-    ]]
+    'tax_query' => [
+        [
+            'taxonomy' => 'post_format',
+            'field'    => 'slug',
+            'terms'    => ['post-format-aside', 'post-format-status'],
+            'operator' => 'NOT IN'
+        ]
+    ],
+    'date_query' => [
+        [
+            'after' => '-18 hours'
+        ]
+    ]
 ];
 $blog_query = new WP_Query($blog_args);
 if ($blog_query->have_posts()) {
@@ -29,7 +36,6 @@ if ($blog_query->have_posts()) {
         <?php
         $blog_query->the_post();
         get_template_part('template-parts/part', 'post'); ?>
-        <a href="<?php echo get_post_type_archive_link('post') ?>">More Posts &raquo;</a>
     </div><?php
             wp_reset_postdata();
         }
