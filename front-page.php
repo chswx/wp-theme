@@ -9,7 +9,7 @@ get_header();
 <?php do_action('wxpress_alerts'); ?>
 <?php do_action('chswx_updates'); ?>
 <?php
-$blog_args = [
+$disco_args = [
     'post_type' => 'post',
     'limit' => 1,
     'category_name' => 'Forecasts',
@@ -27,14 +27,14 @@ $blog_args = [
         ]
     ]
 ];
-$blog_query = new WP_Query($blog_args);
-if ($blog_query->have_posts()) {
+$disco_query = new WP_Query($disco_args);
+if ($disco_query->have_posts()) {
 ?>
-    <div id="blog-intro">
+    <div class="blog-intro">
         <h2>Charleston Weather Discussion</h2>
         <p class="intro-text">The latest forecast and discussion for the Charleston, SC metro area</p>
         <?php
-        $blog_query->the_post();
+        $disco_query->the_post();
         get_template_part('template-parts/part', 'post'); ?>
     </div><?php
             wp_reset_postdata();
@@ -44,5 +44,39 @@ if ($blog_query->have_posts()) {
     <h2>Charleston Area <abbr title="National Weather Service">NWS</abbr> Forecast</h2>
     <?php do_action('wxpress_forecast'); ?>
 </div>
+<?php
+// Query for recent non-forecast blog posts.
+$blog_args = [
+    'post_type' => 'post',
+    'limit' => 1,
+    'tax_query' => [
+        [
+            'taxonomy' => 'post_format',
+            'field'    => 'slug',
+            'terms'    => ['post-format-aside', 'post-format-status'],
+            'operator' => 'NOT IN'
+        ],
+        [
+            'taxonomy' => 'category',
+            'field'    => 'slug',
+            'terms'    => ['Forecasts'],
+            'operator' => 'NOT IN'
+        ]
+    ]
+];
+$blog_query = new WP_Query($blog_args);
+if ($blog_query->have_posts()) {
+?>
+
+    <div class="blog-intro">
+        <h2>More from the Blog</h2>
+        <p class="intro-text">Weather tidbits and other useful info</p>
+        <?php
+        $blog_query->the_post();
+        get_template_part('template-parts/part', 'post'); ?>
+    </div><?php
+            wp_reset_postdata();
+        }
+            ?>
 <?php
 get_footer();
