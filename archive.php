@@ -6,7 +6,7 @@ if (have_posts()) :
 
     while (have_posts()) :
         the_post();
-        if (has_post_format('aside')) {
+        if (has_post_format('aside') || has_post_format('status')) {
             get_template_part('template-parts/part', 'aside');
         } else {
             get_template_part('template-parts/part', 'post');

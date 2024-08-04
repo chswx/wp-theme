@@ -6,8 +6,8 @@ get_header();
     <h2>Currently</h2>
     <?php do_action('wxpress_observations'); ?>
 </div>
-<?php do_action('wxpress_alerts'); ?>
 <?php do_action('chswx_updates'); ?>
+<?php do_action('wxpress_alerts'); ?>
 <?php
 $disco_args = [
     'post_type' => 'post',
@@ -61,6 +61,11 @@ $blog_args = [
             'field'    => 'slug',
             'terms'    => ['Forecasts'],
             'operator' => 'NOT IN'
+        ]
+    ],
+    'date_query' => [
+        [
+            'after' => '-3 days'
         ]
     ]
 ];
