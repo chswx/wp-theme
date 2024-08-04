@@ -68,6 +68,10 @@ h1.main-title a:active {
     font-weight: 600;
 }
 
+.alternate a {
+    font-weight: 600;
+}
+
 .home h2 span {
     letter-spacing: 0em;
     font-weight: 300;
