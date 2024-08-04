@@ -54,12 +54,22 @@ h1.main-title a:active {
 }
 
 .home h2,
-#footer h2,
 .alternate {
-    font-size: 0.8em;
+    font-size: 1.1em;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: rgb(62, 94, 133);
+    background-color: rgb(62, 94, 133);
+    background-image: linear-gradient(180deg, rgb(0, 145, 255), rgb(62, 94, 133));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    font-family: 'Gill Sans', 'Gill Sans MT', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+}
+
+.alternate a {
+    font-weight: 600;
 }
 
 .home h2 span {
@@ -119,7 +129,7 @@ div.system-message.outdated-data::before {
 }
 
 div.fail {
-    margin-bottom: 32px;
+    margin: 32px 0;
     color: #555;
     display: inline-block;
     background-color: #ffdfdf;
@@ -309,7 +319,7 @@ ul#others {
 #footer {
     background-color: #444;
     padding: 10px 10px 20px 10px;
-    color: #DDD;
+    color: #CCC;
     margin-top: 20px;
     clear: both;
 }
@@ -317,6 +327,13 @@ ul#others {
 #footer-wrapper {
     max-width: 768px;
     margin: 0 auto;
+    background: linear-gradient(rgba(68, 68, 68, 0.5), rgba(68, 68, 68, 0.5)), url(../assets/wordmark-oneline.svg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 16rem;
+    padding-top: 1.5rem;
+    margin-top: 10px;
+    text-align: center;
 }
 
 #footer-wrapper p {
@@ -329,10 +346,56 @@ ul#others {
     margin: 10px auto;
 }
 
+#footer-wrapper h3 {
+    font-family: 'Gill Sans', 'Gill Sans MT', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    margin-bottom: -0.5em;
+}
+
+#footer-wrapper ul {
+    list-style: none;
+    padding: 0px;
+    font-size: 0.7rem;
+}
+
+#footer-wrapper ul li {
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+#footer-wrapper ul li::after {
+    padding-left: 10px;
+    content: '\2022'
+}
+
+#footer-wrapper ul li:last-child::after {
+    content: '';
+    padding-left: 0px;
+}
+
 #footer a {
-    color: #FFF;
-    text-decoration: none;
+    color: #EEE;
+    font-weight: normal;
+}
+
+#footer a:hover,
+#footer a.active {
+    text-decoration: underline;
+}
+
+#footer .colophon a {
     font-weight: bold;
+}
+
+#footer-wrapper .disclaimer {
+    font-size: 0.7rem;
+    border-top: 1px solid #777;
+    padding-top: 10px;
 }
 
 article ul li {
@@ -492,8 +555,13 @@ a img.aligncenter {
     color: #333;
 }
 
-#blog-intro .intro-text {
+.intro-text {
     padding-bottom: 8px;
+    margin: 0 0 10px 0;
+}
+
+.home h2 {
+    margin-bottom: 0px;
 }
 
 /* Archive pages */
@@ -504,6 +572,26 @@ a img.aligncenter {
 
 .blog .posts-navigation .nav-links .nav-next {
     float: right;
+}
+
+/* Latest Updates page */
+
+.date-header {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-left: 5px solid #00227d;
+    padding-left: 10px;
+    color: #333;
+}
+
+.latest-updates-archive aside {
+    border-bottom: 1px solid #EEE;
+}
+
+.latest-updates-archive aside:last-of-type {
+    border-bottom: none;
 }
 
 /* Global post styles */
@@ -521,10 +609,14 @@ article.partial-post {
     padding-bottom: 20px;
 }
 
-article.partial-post:last-child,
-.home article.partial-post {
+article.partial-post:last-child {
     border-bottom: none;
     margin-bottom: 20px;
+}
+
+.home article.partial-post {
+    border-bottom: none;
+    margin-bottom: 0px;
 }
 
 article.partial-post header {
@@ -654,16 +746,18 @@ article.full-post .entry-footer.tagged .meta {
 /* Asides/Status */
 
 .aside {
-    padding: 10px;
-    border: 1px solid #a6beff;
-    background-color: #ecf3ff;
-    border-radius: 8px;
-    margin: 30px 0;
+    padding-bottom: 15px;
+    margin: 15px 0;
+    border-bottom: 1px solid #DDD;
 }
 
 .aside p {
     margin-top: 0.1em;
     line-height: 1.4em;
+}
+
+.aside .meta .post-link {
+    font-weight: normal;
 }
 
 /* Responsiveness */
@@ -689,6 +783,14 @@ article.full-post .entry-footer.tagged .meta {
         float: none;
         padding-bottom: 10px;
     }
+
+    #footer-wrapper h3 {
+        letter-spacing: 0.05em;
+        font-size: 0.9rem;
+        color: #DDD;
+    }
+
+
 }
 
 /* Dark mode support */
@@ -809,9 +911,19 @@ article.full-post .entry-footer.tagged .meta {
         color: #777;
     }
 
+    .date-header {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-left: 5px solid #00227d;
+        padding-left: 10px;
+        color: #EEE;
+    }
+
+    .latest-updates-archive aside,
     .aside {
-        border: 1px solid #00227d;
-        background-color: #001438;
+        border-bottom: 1px solid #333;
     }
 
     #advisories li.alert {
@@ -839,6 +951,10 @@ article.full-post .entry-footer.tagged .meta {
     }
 
     #footer {
-        background-color: #222;
+        background-color: rgb(34, 34, 34);
+    }
+
+    #footer-wrapper {
+        background-image: linear-gradient(rgba(34, 34, 34, 0.5), rgba(34, 34, 34, 0.5)), url(../assets/wordmark-oneline.svg);
     }
 }
