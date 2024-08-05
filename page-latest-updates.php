@@ -40,8 +40,7 @@ if ($aside_query->have_posts()) :
         );
         wp_reset_query();
         ?>
-
-
-    <?php
+    </div>
+<?php
 endif;
 get_footer();
