@@ -422,6 +422,27 @@ article.full-post header.entry-header {
     max-width: 100%
 }
 
+/* Details block */
+
+.wp-block-details {
+    box-sizing: border-box;
+    padding: 0.9em;
+    margin-bottom: 0.9em;
+    border-radius: 5px;
+    border: 1px solid #DDD;
+}
+
+.wp-block-details summary {
+    cursor: pointer;
+    background-color: #EEE;
+    margin: -0.9em;
+    padding: 10px;
+}
+
+.wp-block-details[open] summary {
+    margin-bottom: 1em;
+}
+
 /* =WordPress Core
 -------------------------------------------------------------- */
 .alignnone {
