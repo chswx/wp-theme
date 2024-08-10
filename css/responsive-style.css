@@ -368,6 +368,10 @@ ul#others {
     padding-left: 10px;
 }
 
+#footer-wrapper ul li:first-child {
+    padding-left: 0px;
+}
+
 #footer-wrapper ul li::after {
     padding-left: 10px;
     content: '\2022'
