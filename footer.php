@@ -2,7 +2,7 @@
 <div id="footer">
     <div id="footer-wrapper">
         <h2 class="screen-reader-text">Charleston Weather</h2>
-        <p class="colophon">Built and maintained by <a href="https://jaredwsmith.com" target="_blank">Jared Smith</a> in West Ashley for the Charleston, SC metro area since 2008</p>
+        <p class="colophon">Built and maintained by <a href="https://jaredwsmith.com" target="_blank" title="Apparently, also known as &quot;Weather Daddy.&quot;">Jared Smith</a> in West Ashley for the Charleston, SC metro area since 2008</p>
         <h3>Support Charleston Weather</h3>
         <ul>
             <li><a href="https://www.paypal.com/ncp/payment/Y2X89ZSVTWP3G" target="_blank">PayPal Tip Jar</a></li>
