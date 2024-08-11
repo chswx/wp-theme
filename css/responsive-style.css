@@ -60,7 +60,7 @@ h1.main-title a:active {
 
 .home h2,
 .alternate {
-    font-size: 1.1em;
+    font-size: 1.2em;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     background-color: rgb(62, 94, 133);
@@ -87,6 +87,7 @@ h1.main-title a:active {
 
 #currentwx {
     text-align: center;
+    margin-bottom: 2em;
 }
 
 #temp {
@@ -217,7 +218,7 @@ ul#others {
 .intro-text {
     clear: both;
     font-size: 0.7em;
-    padding-top: 8px;
+    padding-top: 3px;
     color: #777;
 }
 
@@ -226,7 +227,14 @@ ul#others {
 }
 
 #currentwx .updated-time {
-    margin-bottom: 20px;
+    margin-bottom: 2em;
+    padding-top: 1em;
+}
+
+/* Advisories */
+
+#advisories {
+    margin-bottom: 2em;
 }
 
 #advisories ul {
@@ -309,16 +317,19 @@ ul#others {
 }
 
 #forecast ul li {
-    padding: 0 0 10px 0;
+    padding: 0 0 20px 0;
     font-size: 0.9em;
     line-height: 1.4em;
 }
 
 #forecast .day {
-    font-weight: 700;
+    font-weight: 600;
+    font-family: var(--chswx-heading-font-family);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     display: block;
     color: #444;
-    font-size: 1.1em;
+    font-size: 1.05em;
 }
 
 #footer {
@@ -461,6 +472,8 @@ div.sharedaddy h3.sd-title {
     font-weight: 600 !important;
     color: #444;
 }
+
+
 
 /* =WordPress Core
 -------------------------------------------------------------- */
@@ -612,6 +625,12 @@ a img.aligncenter {
 
 .blog .posts-navigation .nav-links .nav-next {
     float: right;
+}
+
+/* Latest Updates home feed */
+
+.news-feed {
+    margin-bottom: 2em;
 }
 
 /* Latest Updates page */
