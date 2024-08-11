@@ -960,6 +960,10 @@ article.full-post .entry-footer.tagged .meta {
         color: #DDD;
     }
 
+    div.sharedaddy h3.sd-title {
+        color: #777;
+    }
+
     .liveblog-entry {
         background: transparent;
         border-top: 2px solid #444;
