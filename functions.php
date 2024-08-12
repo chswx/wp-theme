@@ -193,3 +193,19 @@ function chswx_micro_blog_verify()
     echo '<link href="https://micro.blog/chswx" rel="me" />';
 }
 add_action('wp_head', 'chswx_micro_blog_verify');
+
+/**
+ * Add Mastodon attribution to the header on post pages
+ *
+ * @return void
+ */
+function chswx_mastodon_attribution()
+{
+    if (is_single()) {
+        $author_attribution = get_user_meta(get_post_field('post_author'), 'mastodon', true);
+        if (!empty($author_attribution)) {
+            echo '<meta name="fediverse:creator" content="' . $author_attribution . '">';
+        }
+    }
+}
+add_action('wp_head', 'chswx_mastodon_attribution');
