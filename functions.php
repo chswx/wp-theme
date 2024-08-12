@@ -209,3 +209,18 @@ function chswx_mastodon_attribution()
     }
 }
 add_action('wp_head', 'chswx_mastodon_attribution');
+
+/**
+ * Adds the author name to the meta tags.
+ * @return void
+ */
+function chswx_author_meta()
+{
+    if (is_single()) {
+        $author_name = get_the_author_meta('display_name', get_post_field('post_author'));
+        if (!empty($author_name)) {
+            echo '<meta name="author" content="' . $author_name . '">';
+        }
+    }
+}
+add_action('wp_head', 'chswx_author_meta');
