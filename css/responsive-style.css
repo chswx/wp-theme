@@ -886,6 +886,16 @@ article.full-post .entry-footer.tagged .meta {
         color: rgb(134, 163, 198);
     }
 
+    .home h2,
+    .alternate {
+        background-image: linear-gradient(180deg, rgb(101, 188, 255), rgb(72, 154, 255));
+    }
+
+    .intro-text,
+    .updated-time {
+        color: #AAA;
+    }
+
     #feels-like {
         color: #999;
     }
@@ -940,11 +950,11 @@ article.full-post .entry-footer.tagged .meta {
     }
 
     .blog-welcome p {
-        color: #999;
+        color: #AAA;
     }
 
     #forecast .day {
-        color: #999;
+        color: #AAA;
     }
 
     article.partial-post header,
