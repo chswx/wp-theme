@@ -332,6 +332,13 @@ ul#others {
     font-size: 1.05em;
 }
 
+#forecast .fail {
+    text-align: center;
+    width: 70%;
+    display: block;
+    margin: 32px auto;
+}
+
 #footer {
     background-color: #444;
     padding: 10px 10px 20px 10px;
