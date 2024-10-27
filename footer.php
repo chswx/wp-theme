@@ -5,6 +5,7 @@
         <p class="colophon">Built and maintained by <a href="https://jaredwsmith.com" target="_blank" title="Apparently, also known as &quot;Weather Daddy.&quot;">Jared Smith</a> in West Ashley for the Charleston, SC metro area since 2008</p>
         <h3>Support Charleston Weather</h3>
         <ul>
+            <li><a href="/merch/">Merch</a></li>
             <li><a href="https://www.paypal.com/ncp/payment/Y2X89ZSVTWP3G" target="_blank">PayPal Tip Jar</a></li>
             <li><a href="https://patreon.com/chswx" target="_blank">Support on Patreon</a></li>
             <li><a href="/supporters/">Supporters</a></li>
