@@ -310,6 +310,70 @@ ul#others {
     font-weight: bold;
 }
 
+#advisories li.alert button.alert-expand {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.85em;
+    text-decoration: underline;
+    padding: 0;
+    margin-top: 0.3em;
+}
+
+#advisories li.alert button.alert-expand:hover {
+    opacity: 0.7;
+}
+
+#alert-modal {
+    max-width: 600px;
+    width: 90%;
+    padding: 2em;
+    border: 1px solid #DDD;
+    border-radius: 0.5em;
+    background: #FFF;
+    color: #000;
+    margin: auto;
+}
+
+#alert-modal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#alert-modal h3 {
+    margin-top: 0;
+    padding-right: 2em;
+}
+
+#alert-modal #modal-description {
+    margin: 1em 0;
+    line-height: 1.4;
+}
+
+#alert-modal #modal-instructions {
+    margin: 1em 0;
+    padding: 0.5em;
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+}
+
+#alert-modal .modal-close {
+    position: absolute;
+    top: 0.5em;
+    right: 0.75em;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    line-height: 1;
+}
+
+#alert-modal .modal-close:hover {
+    opacity: 0.7;
+}
+
 #forecast ul {
     list-style: none;
     margin: 0;
@@ -1028,6 +1092,25 @@ article.full-post .entry-footer.tagged .meta {
         border-color: rgb(79, 0, 0);
         background-color: rgb(140, 0, 0);
         color: #eaeaea;
+    }
+
+    #advisories li.alert button.alert-expand {
+        color: #aaa;
+    }
+
+    #alert-modal {
+        border: 1px solid #393939;
+        background: #282828;
+        color: #eaeaea;
+    }
+
+    #alert-modal::backdrop {
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    #alert-modal #modal-instructions {
+        border-color: #393939;
+        background-color: #333;
     }
 
     #footer {
