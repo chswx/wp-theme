@@ -1,7 +1,11 @@
+/* === Custom Properties === */
+
 :root {
     --chswx-body-font-family: system-ui, sans-serif;
     --chswx-heading-font-family: 'Gill Sans', 'Gill Sans MT', system-ui, sans-serif;
 }
+
+/* === Page Layout === */
 
 body {
     font-family: var(--chswx-body-font-family);
@@ -25,13 +29,7 @@ div#wrapper {
     list-style: square;
 }
 
-div.system-message {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #ffec94;
-    border: 1px solid #d8c87e;
-    font-size: 0.9em;
-}
+/* === Header & Branding === */
 
 h1.main-title {
     background: rgb(53, 54, 194);
@@ -83,6 +81,16 @@ h1.main-title a:active {
     text-transform: none;
     color: #777;
     font-size: 0.75em;
+}
+
+/* === Current Weather === */
+
+div.system-message {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ffec94;
+    border: 1px solid #d8c87e;
+    font-size: 0.9em;
 }
 
 #currentwx {
@@ -231,7 +239,7 @@ ul#others {
     padding-top: 1em;
 }
 
-/* Advisories */
+/* === Advisories & Alerts === */
 
 #advisories {
     margin-bottom: 2em;
@@ -326,6 +334,8 @@ ul#others {
     opacity: 0.85;
 }
 
+/* === Alert Modal === */
+
 #alert-modal {
     max-width: 600px;
     width: 90%;
@@ -375,6 +385,8 @@ ul#others {
     opacity: 0.7;
 }
 
+/* === Forecast === */
+
 #forecast ul {
     list-style: none;
     margin: 0;
@@ -403,6 +415,8 @@ ul#others {
     display: block;
     margin: 32px auto;
 }
+
+/* === Footer === */
 
 #footer {
     background-color: #444;
@@ -490,6 +504,8 @@ ul#others {
     padding-top: 10px;
 }
 
+/* === Content Blocks === */
+
 article ul li {
     padding-bottom: 10px;
     list-style: square;
@@ -535,7 +551,7 @@ article.full-post header.entry-header {
     margin-bottom: 1em;
 }
 
-/* Sharing */
+/* === Sharing === */
 
 div.sharedaddy h3.sd-title {
     font-family: var(--chswx-heading-font-family);
@@ -545,7 +561,7 @@ div.sharedaddy h3.sd-title {
     color: #444;
 }
 
-
+/* === WordPress Core === */
 
 /* =WordPress Core
 -------------------------------------------------------------- */
@@ -660,6 +676,8 @@ a img.aligncenter {
 }
 
 /* End WordPress Core */
+
+/* === Blog & Posts === */
 
 /* Blog welcome */
 
@@ -891,7 +909,7 @@ article.full-post .entry-footer.tagged .meta {
     font-weight: normal;
 }
 
-/* Responsiveness */
+/* === Responsive Breakpoints === */
 
 @media screen and (min-width: 600px) {
     h1.main-title {
@@ -924,19 +942,42 @@ article.full-post .entry-footer.tagged .meta {
 
 }
 
-/* Dark mode support */
+/* === Dark Mode Overrides === */
 
 @media (prefers-color-scheme: dark) {
+    /* Page Layout */
     body {
         background: #000;
         color: #FFF;
     }
 
+    /* Header & Branding */
     h1.main-title {
         background: rgb(39, 39, 142);
         background: linear-gradient(180deg, rgba(39, 39, 142, 1) 0%, rgb(122, 151, 194) 100%);
     }
 
+    article.partial-post header h1 a {
+        color: #FFF;
+    }
+
+    article.partial-post header h1 a:hover,
+    article.partial-post header h1 a:active {
+        color: rgb(134, 163, 198);
+    }
+
+    .home h2,
+    .alternate,
+    a {
+        color: rgb(134, 163, 198);
+    }
+
+    .home h2,
+    .alternate {
+        background-image: linear-gradient(180deg, rgb(101, 188, 255), rgb(72, 154, 255));
+    }
+
+    /* Current Weather */
     div.fail {
         color: #EEE;
         background-color: #9f6363;
@@ -950,17 +991,6 @@ article.full-post .entry-footer.tagged .meta {
     div.system-message {
         background-color: #9e8300;
         border: 1px solid #a18508;
-    }
-
-    .home h2,
-    .alternate,
-    a {
-        color: rgb(134, 163, 198);
-    }
-
-    .home h2,
-    .alternate {
-        background-image: linear-gradient(180deg, rgb(101, 188, 255), rgb(72, 154, 255));
     }
 
     .intro-text,
@@ -984,15 +1014,6 @@ article.full-post .entry-footer.tagged .meta {
         color: #d37ad3;
     }
 
-    article.partial-post header h1 a {
-        color: #FFF;
-    }
-
-    article.partial-post header h1 a:hover,
-    article.partial-post header h1 a:active {
-        color: rgb(134, 163, 198);
-    }
-
     #sky,
     article.full-post h2,
     article.full-post h3 {
@@ -1012,6 +1033,7 @@ article.full-post .entry-footer.tagged .meta {
         color: #777;
     }
 
+    /* Blog & Posts */
     article.full-post .entry-footer.tagged,
     .entry-footer .post-navigation {
         border-top-color: #444;
@@ -1071,6 +1093,7 @@ article.full-post .entry-footer.tagged .meta {
         border-bottom: 1px solid #333;
     }
 
+    /* Advisories & Alerts */
     #advisories li.alert {
         border: 1px solid #393939;
         background-color: #282828;
@@ -1099,6 +1122,7 @@ article.full-post .entry-footer.tagged .meta {
         color: inherit;
     }
 
+    /* Alert Modal */
     #alert-modal {
         border: 1px solid #393939;
         background: #282828;
@@ -1114,6 +1138,7 @@ article.full-post .entry-footer.tagged .meta {
         background-color: #333;
     }
 
+    /* Footer */
     #footer {
         background-color: rgb(34, 34, 34);
     }

@@ -10,6 +10,12 @@ function register_stylesheet()
 }
 add_action('wp_enqueue_scripts', 'register_stylesheet');
 
+function register_alert_modal_script()
+{
+    wp_enqueue_script('chswx-alert-modal', get_template_directory_uri() . '/assets/js/alert-modal.js', array(), '1.0.0', true);
+}
+add_action('wp_enqueue_scripts', 'register_alert_modal_script');
+
 add_theme_support('title-tag');
 add_theme_support('wp-block-styles');
 add_theme_support('responsive-embeds');
