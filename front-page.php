@@ -8,12 +8,6 @@ get_header(); ?>
 <?php do_action("chswx_updates"); ?>
 <?php do_action("wxpress_alerts"); ?>
 
-<dialog id="alert-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <button class="modal-close" aria-label="Close alert">&times;</button>
-    <h3 id="modal-title"></h3>
-    <div id="modal-description"></div>
-    <div id="modal-instructions"></div>
-</dialog>
 <?php
 $disco_args = [
     "post_type" => "post",
