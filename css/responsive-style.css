@@ -345,6 +345,7 @@ ul#others {
     background: #FFF;
     color: #000;
     margin: auto;
+    box-sizing: border-box;
 }
 
 #alert-modal::backdrop {
@@ -937,6 +938,14 @@ article.full-post .entry-footer.tagged .meta {
         letter-spacing: 0.05em;
         font-size: 0.9rem;
         color: #DDD;
+    }
+
+    /* Alert Modal: prevent bezel overrun on small screens */
+    #alert-modal {
+        width: calc(100% - 1em);
+        max-width: calc(100% - 1em);
+        padding: 1em;
+        margin: 0.5em auto;
     }
 
 
