@@ -338,6 +338,7 @@ ul#others {
 
 #alert-modal {
     max-width: 600px;
+    max-height: calc(100dvh - 2em);
     width: 90%;
     padding: 2em;
     border: 1px solid #DDD;
@@ -345,7 +346,9 @@ ul#others {
     background: #FFF;
     color: #000;
     margin: auto;
+    inset: 0;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 #alert-modal::backdrop {
@@ -942,10 +945,11 @@ article.full-post .entry-footer.tagged .meta {
 
     /* Alert Modal: prevent bezel overrun on small screens */
     #alert-modal {
-        width: calc(100% - 1em);
-        max-width: calc(100% - 1em);
+        width: auto;
+        max-width: calc(100vw - 1em);
         padding: 1em;
-        margin: 0.5em auto;
+        margin: auto;
+        inset: 0;
     }
 
 
