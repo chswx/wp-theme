@@ -340,7 +340,7 @@ ul#others {
     max-width: 600px;
     max-height: calc(100dvh - 2em);
     width: 90%;
-    padding: 2em;
+    padding: 0;
     border: 1px solid #DDD;
     border-radius: 0.5em;
     background: #FFF;
@@ -348,7 +348,14 @@ ul#others {
     margin: auto;
     inset: 0;
     box-sizing: border-box;
+    overflow: hidden;
+}
+
+#alert-modal .modal-content {
+    max-height: calc(100dvh - 2em);
     overflow-y: auto;
+    padding: 2em;
+    box-sizing: border-box;
 }
 
 #alert-modal::backdrop {
@@ -947,9 +954,13 @@ article.full-post .entry-footer.tagged .meta {
     #alert-modal {
         width: auto;
         max-width: calc(100vw - 1em);
-        padding: 1em;
         margin: auto;
         inset: 0;
+    }
+
+    #alert-modal .modal-content {
+        max-height: calc(100dvh - 2em);
+        padding: 1em;
     }
 
 
