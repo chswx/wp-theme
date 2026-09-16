@@ -364,9 +364,30 @@ ul#others {
     backdrop-filter: blur(3px);
 }
 
+#alert-modal .modal-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75em 1em;
+    background-color: #EEE;
+    color: #000;
+}
+
+#alert-modal[class*="-watch"] .modal-titlebar {
+    background-color: rgb(255, 236, 69);
+}
+
+#alert-modal[class*="-advisory"] .modal-titlebar {
+    background-color: rgb(255, 176, 14);
+}
+
+#alert-modal[class*="-warning"] .modal-titlebar {
+    background-color: rgb(192, 0, 0);
+    color: #FFF;
+}
+
 #alert-modal h3 {
-    margin-top: 0;
-    padding-right: 2em;
+    margin: 0;
 }
 
 #alert-modal #modal-description {
@@ -382,9 +403,8 @@ ul#others {
 }
 
 #alert-modal .modal-close {
-    position: absolute;
-    top: 0.5em;
-    right: 0.75em;
+    flex: 0 0 auto;
+    margin-left: 1em;
     background: none;
     border: none;
     font-size: 1.5em;
