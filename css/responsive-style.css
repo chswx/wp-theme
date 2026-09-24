@@ -360,6 +360,7 @@ ul#others {
 #alert-modal {
     max-width: 600px;
     max-height: calc(100dvh - 2em);
+    max-height: calc(100svh - 2em);
     width: 90%;
     padding: 0;
     border: 1px solid var(--chswx-alert-modal-border);
@@ -373,10 +374,31 @@ ul#others {
     overflow: hidden;
 }
 
+/* Flex column so .modal-content takes only the height left below the titlebar.
+   Previously both shared the full max-height and the dialog's overflow:hidden
+   clipped the bottom of the scroller, making the last lines unreachable. */
+#alert-modal[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+#alert-modal .modal-titlebar {
+    flex: 0 0 auto;
+}
+
 #alert-modal .modal-content {
-    max-height: calc(100dvh - 2em);
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
     box-sizing: border-box;
+}
+
+/* WebKit drops padding-bottom of scroll containers from scrollable overflow,
+   so use an in-flow spacer to keep a modal-bg strip below content at scroll end */
+#alert-modal .modal-content::after {
+    content: '';
+    display: block;
+    height: 2em;
 }
 
 #alert-modal::backdrop {
@@ -1029,13 +1051,23 @@ article.full-post .entry-footer.tagged .meta {
     #alert-modal {
         width: auto;
         max-width: calc(100vw - 1em);
+        max-height: calc(100dvh - 2em);
+        max-height: calc(100svh - 2em);
         margin: auto;
         inset: 0;
     }
 
     #alert-modal .modal-content {
-        max-height: calc(100dvh - 2em);
-        padding: 1em;
+        /* Horizontal padding comes from #modal-description/#modal-instructions;
+           extra padding here doubled it on mobile. Bottom strip via ::after spacer. */
+        padding: 0;
+    }
+
+    /* Description/instructions are last visible children; their bottom margin
+       sits on top of the padding — cap it so the bg strip stays crisp */
+    #alert-modal #modal-description,
+    #alert-modal #modal-instructions {
+        margin-bottom: 0;
     }
 
 
