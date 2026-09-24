@@ -460,7 +460,6 @@ ul#others {
 #alert-modal #modal-description {
     margin: 1em 0;
     padding: 0 1em;
-    line-height: 1.4;
 }
 
 #alert-modal #modal-instructions {
@@ -473,6 +472,7 @@ ul#others {
     padding: 1em;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 0.85em;
+    line-height: 1.4;
     border: 1px solid var(--chswx-alert-modal-instructions-border);
     background-color: var(--chswx-alert-modal-instructions-bg);
 }
